@@ -54,7 +54,6 @@ playsound==1.2.2
 protobuf==6.31.0
 pymongo==4.13.0
 pyparsing==3.2.3
-pypiwin32==223
 pyreadline3==3.5.4
 python-dateutil==2.9.0.post0
 python-telegram-bot==22.1
