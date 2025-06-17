@@ -1,70 +1,87 @@
-# 📘 Human Resource Management System
+# Human Resource Management System (HRMS)
 
-## 🚀 Mô tả dự án
-Hệ thống quản lý nhân sự tích hợp chấm công bằng khuôn mặt và gameboard (thưởng điểm), phân quyền theo vai trò `Admin`, `Manager`, `Employee`. Backend sử dụng Flask, nhận diện khuôn mặt với + deeplearning.
+## Mô tả dự án
 
----
-
-## ⚙️ Yêu cầu hệ thống
-- Python 3.9+
-- Anaconda hoặc Miniconda
-- Webcam (nếu sử dụng tính năng chấm công khuôn mặt)
+Dự án xây dựng hệ thống quản lý nhân sự tích hợp các tính năng:
+- Phân quyền theo vai trò: Admin, Manager, Employee
+- Chấm công bằng nhận diện khuôn mặt sử dụng AI
+- Gameboard điểm thưởng: theo dõi hiệu suất làm việc
+- Giao diện web đơn giản, dễ mở rộng, có thể triển khai trên Render
 
 ---
 
-## 🐍 1. Cài đặt Anaconda (nếu chưa có)
+## Tính năng chính
 
-Tải và cài đặt tại:  
-👉 https://www.anaconda.com/products/distribution
+### 1. Phân quyền vai trò
+- Admin: toàn quyền quản trị nhân sự, tài khoản, phê duyệt
+- Manager: theo dõi nhân sự, duyệt thông tin
+- Employee: chấm công, xem thông tin cá nhân và bảng điểm
+
+### 2. Chấm công bằng khuôn mặt
+- SCRFD: phát hiện khuôn mặt nhanh, nhẹ
+- ArcFace: nhận diện khuôn mặt chính xác bằng embedding vector
+
+### 3. Gameboard (trò chơi hóa hiệu suất)
+- Điểm số dựa trên: chuyên cần, KPI, hoàn thành deadline
+- Có bảng xếp hạng, level, huy hiệu để tạo động lực làm việc
 
 ---
 
-## 📦 2. Tạo môi trường ảo với Anaconda
+## Yêu cầu hệ thống
+
+- Python ≥ 3.9
+- Anaconda hoặc Miniconda (khuyến nghị)
+- Webcam (nếu test tính năng chấm công AI)
+
+---
+
+## Cài đặt & chạy
+
+### Bước 1: Cài Anaconda (nếu chưa có)
+
+Tải tại: https://www.anaconda.com/products/distribution
+
+### Bước 2: Tạo môi trường ảo
 
 ```bash
-# Tạo môi trường tên "hrms"
 conda create -n hrms python=3.9
-
-# Kích hoạt môi trường
 conda activate hrms
 ```
 
----
-
-## 📄 3. Cài các thư viện cần thiết từ requirements.txt
+### Bước 3: Tải source code và cài thư viện
 
 ```bash
-# Di chuyển đến thư mục chứa project
+git clone https://github.com/Group15N07/Quan_ly_nhan_su.git
 cd Quan_ly_nhan_su
-
-# Cài thư viện
 pip install -r requirements.txt
 ```
 
-📌 Nếu gặp lỗi với OpenCV hoặc dlib, bạn có thể cài riêng:
+### Bước 4: Thêm file AI (nếu sử dụng nhận diện khuôn mặt)
+
+Tải và đặt các file `.onnx` vào `face_module/weights/`:
+
+- det_10g.onnx (SCRFD)
+- w600k_r50.onnx (ArcFace)
+
+### Bước 5: Chạy ứng dụng
+
 ```bash
-pip install opencv-python
-```
-
----
-
-## 🏃‍♂️ 4. Chạy ứng dụng Flask
-
-```bash
-# Đặt biến môi trường (Windows)
+# Windows
 set FLASK_APP=run.py
 set FLASK_ENV=development
+flask run
 
-# Khởi chạy
+# macOS/Linux
+export FLASK_APP=run.py
+export FLASK_ENV=development
 flask run
 ```
 
-⏱ Ứng dụng sẽ chạy tại:  
-👉 http://127.0.0.1:5000
+Truy cập trình duyệt: http://127.0.0.1:5000
 
 ---
 
-## 👤 Tài khoản mẫu để đăng nhập
+## Tài khoản mẫu
 
 | Role     | Username    | Password   |
 |----------|-------------|------------|
@@ -74,33 +91,51 @@ flask run
 
 ---
 
-## 📂 Cấu trúc thư mục chính
+## Cấu trúc thư mục
 
 ```
 Quan_ly_nhan_su/
 ├── app/
-│   ├── routes/                # Các route Flask theo từng chức năng
-│   ├── models/                # Cấu trúc bảng và ORM
-│   ├── templates/             # Giao diện Jinja2
-│   ├── static/                # File CSS, JS, ảnh,...
-│   ├── utils/                 # Hàm xử lý bổ trợ
-│   ├── decorators/            # Phân quyền truy cập (role_required, login_required...)
-│   └── services/              # Các lớp xử lý logic tách biệt của facemodel
-├── run.py                     # File khởi chạy Flask
-├── requirements.txt           # Thư viện cần cài
+│   ├── routes/           # Flask routes
+│   ├── models/           # ORM Models
+│   ├── templates/        # Giao diện Jinja2
+│   ├── static/           # CSS, JS, images
+│   ├── decorators/       # role_required, login_required...
+│   ├── utils/            # tiện ích xử lý
+│   └── services/         # xử lý AI
+├── face_module/
+│   ├── load_model.py     # load mô hình SCRFD + ArcFace
+│   └── weights/          # model .onnx
+├── run.py
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 💬 Góp ý hoặc hỗ trợ
+## Deployment
 
-Liên hệ: 23010101@st.phenikaa-uni.edu.vn
-
+- Hệ thống có thể deploy dễ dàng trên [Render](https://render.com/)
+- Sử dụng gunicorn để chạy production server
+- Chỉ cần upload repo + bổ sung model `.onnx`
 
 ---
 
-## 🔗 Repository GitHub
+## Tài liệu & trình bày
 
-Mã nguồn được lưu trữ tại:  
-👉 [https://github.com/Group15N07/Quan_ly_nhan_su](https://github.com/Group15N07/Quan_ly_nhan_su)
+- Slide trình bày: https://drive.google.com/file/d/14TAz9K0-3OAD-UTbIGX_a8q81RGjWOzq/view?usp=sharing
+- Báo cáo chi tiết: https://drive.google.com/file/d/1vtyD4xOMvdyWtVzFW5gLwe8_rHewh7Gu/view?usp=sharing
+
+---
+
+## Liên hệ
+
+Tác giả chính: Hoàng Nguyễn  
+Email: 23010101@st.phenikaa-uni.edu.vn  
+GitHub: https://github.com/Group15N07/Quan_ly_nhan_su
+
+---
+
+## Giấy phép
+
+MIT License © Nguyễn Văn Hoàng – Phenikaa University
