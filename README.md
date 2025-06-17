@@ -42,7 +42,8 @@ Dự án xây dựng hệ thống quản lý nhân sự tích hợp các tính n
 Tải tại: https://www.anaconda.com/products/distribution
 
 ### Bước 2: Tạo môi trường ảo
-
+conda create -n tenbanmuondat python=(bản mà bạn muốn cài)
+VD:
 ```bash
 conda create -n hrms python=3.9
 conda activate hrms
