@@ -3,6 +3,7 @@ import onnxruntime
 from face_module.c.cConst import Const
 from face_module.models.arcface import ArcFace
 from face_module.models.scrfd import SCRFD
+import os
 var = Const()
 
 def load_model():
