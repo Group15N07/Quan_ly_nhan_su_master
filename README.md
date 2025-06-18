@@ -116,9 +116,9 @@ Quan_ly_nhan_su/
 
 ## Deployment
 
-- Hệ thống có thể deploy dễ dàng trên [Render](https://render.com/)
+- Hệ thống có thể deploy trên [Render](https://render.com/)
 - Sử dụng gunicorn để chạy production server
-- Chỉ cần upload repo + bổ sung model `.onnx`
+- Tuy nhiên cần upload bổ sung model `.onnx`
 
 ---
 
