@@ -1,3 +1,16 @@
+body {
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body #page-content-wrapper {
+    background-image: url('/static/img/background_employee.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    backdrop-filter: blur(10px);
+  
+}
 #sidebar {
   width: 230px;
   min-height: 100vh;

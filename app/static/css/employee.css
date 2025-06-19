@@ -246,7 +246,7 @@ body #page-content-wrapper {
 }
 .form-control {
     width: 100%;
-   
+    padding-left: 50px;
     border: 2px solid #e0e6ed;
     border-radius: 12px;
     font-size: 1rem;
