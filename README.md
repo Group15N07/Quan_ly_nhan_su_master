@@ -133,7 +133,7 @@ Quan_ly_nhan_su/
 
 Tác giả chính: Hoàng Nguyễn  
 Email: 23010101@st.phenikaa-uni.edu.vn  
-GitHub: https://github.com/Group15N07/Quan_ly_nhan_su_master
+Bản code cũ và các nhanh branch tại GitHub: https://github.com/Group15N07/Quan_ly_nhan_su
 
 ---
 
