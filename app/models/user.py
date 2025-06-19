@@ -6,7 +6,7 @@ class User(UserMixin, db.Model):  # ✅ thêm UserMixin
     id = db.Column(db.Integer, primary_key=True)
     employee_code = db.Column(db.String(10), unique=True)
 
-    # ✅ Quan hệ ngược lại
+    # Quan hệ ngược lại
     employee_info = db.relationship("EmployeeInfo", back_populates="user", uselist=False)
     username = db.Column(db.String(64), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
@@ -25,7 +25,7 @@ class User(UserMixin, db.Model):  # ✅ thêm UserMixin
         if last_user and last_user.employee_code.isdigit():
             new_code = str(int(last_user.employee_code) + 1)
         else:
-            new_code = '250001'  # hoặc số bắt đầu mà bạn muốn
+            new_code = '250001'
 
         return new_code
 

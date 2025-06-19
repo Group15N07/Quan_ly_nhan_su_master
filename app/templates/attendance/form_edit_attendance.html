@@ -1,5 +1,8 @@
 {% extends layout %}
 {% block content %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/attendance.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/thongtinnhanvien.css') }}">
+
 <div class="container mt-4">
     <h4>Sửa thông tin chấm công ngày {{ record.date.strftime('%Y-%m-%d') }} cho {{ record.user.username }}</h4>
     <form method="POST">
