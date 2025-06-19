@@ -14,12 +14,12 @@ def change_password():
         new_password = request.form.get('new_password')
         confirm_password = request.form.get('confirm_password')
 
-        if not check_password_hash(current_user.password, old_password):
+        if not current_user.check_password(old_password):
             flash("Mật khẩu cũ không đúng.", "danger")
         elif new_password != confirm_password:
             flash("Mật khẩu mới và xác nhận không khớp.", "danger")
         else:
-            current_user.password = generate_password_hash(new_password)
+            current_user.set_password(new_password)
             db.session.commit()
             flash("Cập nhật mật khẩu thành công.", "success")
             return redirect(url_for('settings.change_password'))
