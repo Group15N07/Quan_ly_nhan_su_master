@@ -118,7 +118,7 @@ Quan_ly_nhan_su/
 
 - Hệ thống có thể deploy trên [Render](https://render.com/)
 - Sử dụng gunicorn để chạy production server
-- Tuy nhiên cần upload bổ sung model `.onnx`
+- Tuy nhiên cần upload bổ sung model `.onnx` bởi vì khi deploy cả folder code này thì phần .onnx bị lỗi. Nếu bạn devloy thành công hãy cho tôi biết qua email bên dưới nhé rất vui khi nhận được mail của bạn. Bạn có thể clone về và update thêm vào nhánh mới thật may mắn khi nhận được sự quan tâm của bạn
 
 ---
 
